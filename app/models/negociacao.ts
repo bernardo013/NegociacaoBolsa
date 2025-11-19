@@ -1,39 +1,43 @@
 //permite exportar 
 export class Negociacao {
 //tralha (#) representa os modificadores de acesso (private, public e protected)
-    #data;
-    #quantidade;
-    #valor;
+    private _data;
+    private _quantidade;
+    private _valor;
 
-    constructor(data,quantidade,valor) {
-        this.#data = data
-        this.#quantidade = quantidade 
-        this.#valor = valor
+    constructor(data: Date,quantidade: number,valor: number) {
+        this._data = data
+        this._quantidade = quantidade 
+        this._valor = valor
     }
 
-    get data() {
-        return this.#data;
+    get getData(): Date {
+        return this._data;
     }
 
-    get quantidade() {
-        return this.#quantidade
+    get getQuantidade(): number {
+        return this._quantidade
     }
 
-    get valor(){
-        return this.#valor
+    get getValor(): number{
+        return this._valor
 
+    }
+
+    get getVolume(): number {
+        return this._quantidade * this._valor
     }
 
     // set data(data) {
-    //  return this.#data = data
+    //   this.#data = data
     // }
 
     //  set quantidade(quantidade) {
-    //  return this.#quantidade = quantidade
+    //   this.#quantidade = quantidade
     // }
 
     //  set valor(valor) {
-    //  return this.#valor = valor
+    //   this.#valor = valor
     // }
 }
  

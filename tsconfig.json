@@ -5,7 +5,8 @@
         "outDir": "dist/js",
         "target": "es6",
         //não gera os arquivos novo se o arquivo não estiver passando na compilação.
-        "noEmitOnError": true
+        "noEmitOnError": true,
+        "noImplicitAny": true
     },
 
     "include": ["app/**/*"]
