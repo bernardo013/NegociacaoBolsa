@@ -1,9 +1,11 @@
 import { Negociacao } from "../models/negociacao.js";
+import { Negociacoes } from "../models/negociacoes.js";
 
 export class NegociacaoController {
   private inputData: HTMLInputElement;
   private inputQuantidade: HTMLInputElement;
   private inputValor: HTMLInputElement;
+  private negociacoes = new Negociacoes;
 
   constructor() {
     this.inputData = document.querySelector("#data");
@@ -11,10 +13,20 @@ export class NegociacaoController {
     this.inputValor = document.querySelector("#valor");
   }
 
+  //FAZ O FLUXO DO PROGRAMA
+  // Lê os inputs do HTML
+  // Converte esses valores para os tipos corretos
+  // Cria um objeto Negociacao
+  // Chama o adiciona() da classe Negociações
+  //exibe a lista com método lista() do tipo readOnlyArray.
+  // Limpa o formulário
   adiciona(): void {
     const negociacao = this.criaNegocicao();
-    console.log(negociacao)
-    this.limparForm()
+    this.negociacoes.adiciona(negociacao);
+    const negociacoes = this.negociacoes.lista();
+    console.log(negociacoes);
+    this.limparForm();
+    
   }
 
   criaNegocicao(): Negociacao {
@@ -24,6 +36,7 @@ export class NegociacaoController {
     const data = new Date(this.inputData.value.replace(exp, ','));
     const quantidade = parseInt(this.inputQuantidade.value);
     const valor = parseFloat(this.inputValor.value);
+  
 
     //passando para o construtor.
     return new Negociacao(data, quantidade, valor);
