@@ -6,3 +6,5 @@ form.addEventListener('submit', event => {
     event.preventDefault();
     negociacaoController.adiciona();
 })
+
+alert(1)
