@@ -1,1 +1,1 @@
-todos os arquivos documentos, explicando a função de cada bloco/arquivo
+todos os arquivos documentados, explicando a função de cada bloco/arquivo
