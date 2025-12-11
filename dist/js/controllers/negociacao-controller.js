@@ -1,11 +1,14 @@
 import { Negociacao } from "../models/negociacao.js";
 import { Negociacoes } from "../models/negociacoes.js";
+import { negociacoesView } from "../views/negociacoes-view.js";
 export class NegociacaoController {
     constructor() {
         this.negociacoes = new Negociacoes;
+        this.NegociacoesView = new negociacoesView('#negociacoesView');
         this.inputData = document.querySelector("#data");
         this.inputQuantidade = document.querySelector("#quantidade");
         this.inputValor = document.querySelector("#valor");
+        this.NegociacoesView.update();
     }
     //FAZ O FLUXO DO PROGRAMA
     // Lê os inputs do HTML
