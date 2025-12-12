@@ -13,7 +13,7 @@ export class NegociacaoController {
     this.inputData = document.querySelector("#data");
     this.inputQuantidade = document.querySelector("#quantidade");
     this.inputValor = document.querySelector("#valor");
-    this.NegociacoesView.update()
+    this.NegociacoesView.update(this.negociacoes)
   }
 
   //FAZ O FLUXO DO PROGRAMA
@@ -26,8 +26,7 @@ export class NegociacaoController {
   adiciona(): void {
     const negociacao = this.criaNegocicao();
     this.negociacoes.adiciona(negociacao);
-    const negociacoes = this.negociacoes.lista();
-    console.log(negociacoes);
+    this.NegociacoesView.update(this.negociacoes)
     this.limparForm();
     
   }
