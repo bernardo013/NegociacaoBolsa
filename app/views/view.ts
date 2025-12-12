@@ -1,4 +1,4 @@
-export class View<T> {
+export abstract class View<T> {
      protected elemento: HTMLElement;
     
     constructor(seletor: string) {
@@ -11,7 +11,5 @@ export class View<T> {
 
     }
 
-     template(model: T): string {
-        throw Error('precisa herdar template')
-    }
+    abstract template(model: T): string
 }
