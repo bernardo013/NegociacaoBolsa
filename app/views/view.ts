@@ -8,7 +8,6 @@ export abstract class View<T> {
      update(model: T): void {
         const template = this.template(model)
         this.elemento.innerHTML = template
-
     }
 
     protected abstract template(model: T): string

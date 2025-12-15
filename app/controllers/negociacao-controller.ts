@@ -25,15 +25,19 @@ export class NegociacaoController {
   // Chama o adiciona() da classe Negociações
   //exibe a lista com método lista() do tipo readOnlyArray.
   // Limpa o formulário
-  adiciona(): void {
+  public adiciona(): void {
     const negociacao = this.criaNegocicao();
-    this.negociacoes.adiciona(negociacao);
-    this.NegociacoesView.update(this.negociacoes)
-    this.mensagemView.update('Negociacão adicionada com sucesso!!')
-    this.limparForm();    
+      if(!this.diaUtil(negociacao.data)){
+          this.mensagemView.update("apenas negociações em dias úteis são aceitas!")
+            return
+      }
+        this.negociacoes.adiciona(negociacao);
+        this.atualizaView()
+        this.limparForm();
+      
   }
 
-  criaNegocicao(): Negociacao {
+  private criaNegocicao(): Negociacao {
     //expressaõ regular que seleciona "-" e /g para indicar global ou seja todas "-";
     const exp = /-/g;
     //convertendo dados de entrada.
@@ -46,10 +50,19 @@ export class NegociacaoController {
     return new Negociacao(data, quantidade, valor);
   }
 
-  limparForm():void {
+  private limparForm():void {
     this.inputData.value = ''
     this.inputQuantidade.value = ''
     this.inputValor.value = ''
     this.inputData.focus();
+  }
+
+  private diaUtil(data: Date){
+    return data.getDay()> 0 && data.getDay() < 6
+  }
+
+  private atualizaView(): void {
+    this.NegociacoesView.update(this.negociacoes)
+    this.mensagemView.update('Negociacão adicionada com sucesso!!')
   }
 }
