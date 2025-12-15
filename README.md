@@ -1,5 +1,6 @@
 Sistema de cadastro e visualização de negociações utilizando TypeScript.
 -
+Projeto Alura
 
 <strong>Funcionalidades da API</strong>
 
