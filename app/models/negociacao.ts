@@ -22,7 +22,7 @@ export class Negociacao {
 
 
     //por ser estático o método pode ser acessado sem a classe ser instanciada.
- static criaDe(dataString: string, quantidadeString: string, valorString: string): Negociacao {
+ public static criaDe(dataString: string, quantidadeString: string, valorString: string): Negociacao {
         
     //expressaõ regular que seleciona "-" e /g para indicar global ou seja todas "-";
     const exp = /-/g;
