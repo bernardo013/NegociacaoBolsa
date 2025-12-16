@@ -21,7 +21,7 @@ export class NegociacaoController {
     //exibe a lista com método lista() do tipo readOnlyArray.
     // Limpa o formulário
     adiciona() {
-        const negociacao = this.criaNegocicao();
+        const negociacao = Negociacao.criaDe(this.inputData.value, this.inputQuantidade.value, this.inputValor.value);
         if (!this.diaUtil(negociacao.data)) {
             this.mensagemView.update("apenas negociações em dias úteis são aceitas!");
             return;
@@ -29,16 +29,6 @@ export class NegociacaoController {
         this.negociacoes.adiciona(negociacao);
         this.atualizaView();
         this.limparForm();
-    }
-    criaNegocicao() {
-        //expressaõ regular que seleciona "-" e /g para indicar global ou seja todas "-";
-        const exp = /-/g;
-        //convertendo dados de entrada.
-        const data = new Date(this.inputData.value.replace(exp, ','));
-        const quantidade = parseInt(this.inputQuantidade.value);
-        const valor = parseFloat(this.inputValor.value);
-        //passando para o construtor.
-        return new Negociacao(data, quantidade, valor);
     }
     limparForm() {
         this.inputData.value = '';
