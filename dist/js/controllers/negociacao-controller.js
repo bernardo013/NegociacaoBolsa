@@ -13,13 +13,6 @@ export class NegociacaoController {
         this.inputValor = document.querySelector("#valor");
         this.NegociacoesView.update(this.negociacoes);
     }
-    //FAZ O FLUXO DO PROGRAMA
-    // Lê os inputs do HTML
-    // Converte esses valores para os tipos corretos
-    // Cria um objeto Negociacao
-    // Chama o adiciona() da classe Negociações
-    //exibe a lista com método lista() do tipo readOnlyArray.
-    // Limpa o formulário
     adiciona() {
         const negociacao = Negociacao.criaDe(this.inputData.value, this.inputQuantidade.value, this.inputValor.value);
         if (!this.diaUtil(negociacao.data)) {

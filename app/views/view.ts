@@ -4,7 +4,14 @@ export abstract class View<T> {
     
      //torna opicional o parâmetro escapar.
     constructor(seletor: string, escapar?: boolean) {
-        this.elemento = document.querySelector(seletor)
+        const elemento = document.querySelector(seletor)
+        //verifica se o nosso elemento exitir garantimos que ele não será nulo forçando que sera um HTMLElement
+        if(elemento) {
+            this.elemento = elemento as HTMLElement
+        } else {
+            throw Error(`Seletor ${seletor} não existe no DOM`)
+        }
+        
         if(escapar) {
             this.escapar = escapar
         }

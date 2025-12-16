@@ -6,7 +6,10 @@
         "target": "es6",
         //não gera os arquivos novo se o arquivo não estiver passando na compilação.
         "noEmitOnError": true,
-        "noImplicitAny": true
+        "noImplicitAny": true,
+        "removeComments": true,
+        //torna explicito que alguns métodos podem ser null e nos obrigado a fazer a checagem e a tratar os métodos/variáveis
+        "strictNullChecks": true
     },
 
     "include": ["app/**/*"]
