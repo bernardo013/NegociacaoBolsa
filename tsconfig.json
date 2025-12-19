@@ -2,7 +2,7 @@
     //pediando para o compilador criar os mesmos arquivos de app, em dist só quem ao inves de type em js.
     "compilerOptions": {
         //caminho da pasta que quer ser copiada.
-        "outDir": "dist/js",
+        "outDir": "app/dist/js",
         "target": "es6",
         //não gera os arquivos novo se o arquivo não estiver passando na compilação.
         "noEmitOnError": true,
@@ -12,6 +12,6 @@
         "strictNullChecks": true
     },
 
-    "include": ["app/**/*"]
+    "include": ["app/src/**/*"]
 
 }
