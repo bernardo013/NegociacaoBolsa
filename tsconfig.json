@@ -9,7 +9,8 @@
         "noImplicitAny": true,
         "removeComments": true,
         //torna explicito que alguns métodos podem ser null e nos obrigado a fazer a checagem e a tratar os métodos/variáveis
-        "strictNullChecks": true
+        "strictNullChecks": true,
+        "experimentalDecorators": true,
     },
 
     "include": ["app/src/**/*"]

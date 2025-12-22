@@ -1,3 +1,5 @@
+import { inspect } from "util";
+import { logarTempoDeExecucao } from "../decorators/logar-tempo-de-execucao.js";
 import { DiaDaSemana } from "../enums/diasDaSemana.js";
 import { Negociacao } from "../models/negociacao.js";
 import { Negociacoes } from "../models/negociacoes.js";
@@ -20,14 +22,17 @@ export class NegociacaoController {
     this.NegociacoesView.update(this.negociacoes)
   }
 
-  //FAZ O FLUXO DO PROGRAMA
-  // Lê os inputs do HTML
-  // Converte esses valores para os tipos corretos
-  // Cria um objeto Negociacao
-  // Chama o adiciona() da classe Negociações
-  //exibe a lista com método lista() do tipo readOnlyArray.
-  // Limpa o formulário
+
+
+// Adiciona o decorator para medir o tempo de execução do método 
+//escolhe se é em segundos (true) ou milisegundos (false)
+  @logarTempoDeExecucao(true)
   public adiciona(): void {
+  //FAZ O FLUXO DO PROGRAMA
+  // a função criaDe() vindo da classe Negociacao, onverte esses valores para os tipos corretos
+  // Cria um objeto Negociacao
+  // chama o método adiciona() do objeto negociacoes para adicionar a nova negociação em um array privado
+  // Limpa o formulário
     const negociacao = Negociacao.criaDe(this.inputData.value, this.inputQuantidade.value, this.inputValor.value)
       if(!this.diaUtil(negociacao.data)){
           this.mensagemView.update("apenas negociações em dias úteis são aceitas!")
@@ -36,7 +41,6 @@ export class NegociacaoController {
         this.negociacoes.adiciona(negociacao);
         this.atualizaView()
         this.limparForm();
-      
   }
 
   private limparForm():void {
