@@ -1,4 +1,4 @@
-import { inspect } from "util";
+import { inspect } from "../decorators/inspect.js";
 import { logarTempoDeExecucao } from "../decorators/logar-tempo-de-execucao.js";
 import { DiaDaSemana } from "../enums/diasDaSemana.js";
 import { Negociacao } from "../models/negociacao.js";
@@ -27,6 +27,7 @@ export class NegociacaoController {
 // Adiciona o decorator para medir o tempo de execução do método 
 //escolhe se é em segundos (true) ou milisegundos (false)
   @logarTempoDeExecucao(true)
+  @inspect()
   public adiciona(): void {
   //FAZ O FLUXO DO PROGRAMA
   // a função criaDe() vindo da classe Negociacao, onverte esses valores para os tipos corretos
@@ -42,7 +43,7 @@ export class NegociacaoController {
         this.atualizaView()
         this.limparForm();
   }
-
+  
   private limparForm():void {
     this.inputData.value = ''
     this.inputQuantidade.value = ''
