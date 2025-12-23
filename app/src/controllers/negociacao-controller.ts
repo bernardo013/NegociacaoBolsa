@@ -27,7 +27,6 @@ export class NegociacaoController {
 // Adiciona o decorator para medir o tempo de execução do método 
 //escolhe se é em segundos (true) ou milisegundos (false)
   @logarTempoDeExecucao(true)
-  @inspect()
   public adiciona(): void {
   //FAZ O FLUXO DO PROGRAMA
   // a função criaDe() vindo da classe Negociacao, onverte esses valores para os tipos corretos

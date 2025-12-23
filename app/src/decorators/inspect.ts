@@ -1,7 +1,5 @@
-
-
-export function inspect(){
-    return function(
+// não precisa retornar uma função, pois não vai passar parâmetros
+   export function inspect( 
         target: any,
         propertyKey: string,  
         descriptor: PropertyDescriptor  
@@ -10,12 +8,13 @@ export function inspect(){
         descriptor.value = function(...args: any[])
         {
              console.log(`O Método---> ${propertyKey}()`)
+              console.log(`Parâmetro ---> ${JSON.stringify(args)}`)
              const retorno = metodoOriginal.apply(this, args);
-            
-            return retorno
+            console.log(`Retorno ---> ${JSON.stringify(retorno)}`)
+            return retorno;
         }
         return descriptor;
     }
     
-}
+
 
