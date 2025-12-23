@@ -6,7 +6,7 @@ export function logarTempoDeExecucao(emSegundos) {
             const t1 = performance.now();
             const retorno = metodoOriginal.apply(this, args);
             const t2 = performance.now();
-            const tempo = ((t2 - t1) / divisor).toFixed(4);
+            const tempo = ((t2 - t1) / divisor).toFixed(5);
             console.log(`O método ${propertyKey} demorou ${divisor} ${unidade} para ser executado.`);
             return retorno;
         };
