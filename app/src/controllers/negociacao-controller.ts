@@ -19,6 +19,7 @@ export class NegociacaoController {
   private mensagemView = new MensagemView("#mensagemView")
 
   constructor() {
+    //garante que o que vai ser passado vai ser um HTMLInputElement, pois definimos que o input pode ou não ser null: "HTMLInputElement | null"
     this.NegociacoesView.update(this.negociacoes)
   }
 
