@@ -15,14 +15,10 @@ export class NegociacaoController {
   @domInjector("#valor")
   private inputValor: HTMLInputElement;
   private negociacoes = new Negociacoes;
-  private NegociacoesView = new negociacoesView("#negociacoesView", true)
+  private NegociacoesView = new negociacoesView("#negociacoesView")
   private mensagemView = new MensagemView("#mensagemView")
 
   constructor() {
-    //garante que o que vai ser passado vai ser um HTMLInputElement, pois definimos que o input pode ou não ser null: "HTMLInputElement | null"
-    this.inputData = document.querySelector("#data") as HTMLInputElement;
-    this.inputQuantidade = document.querySelector("#quantidade") as HTMLInputElement;
-    this.inputValor = document.querySelector("#valor") as HTMLInputElement;
     this.NegociacoesView.update(this.negociacoes)
   }
 
