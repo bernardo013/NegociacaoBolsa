@@ -29,7 +29,7 @@ export class NegociacaoController {
   @logarTempoDeExecucao(true)
   public adiciona(): void {
   //FAZ O FLUXO DO PROGRAMA
-  // a função criaDe() vindo da classe Negociacao, onverte esses valores para os tipos corretos
+  // a função criaDe() vindo da classe Negociacao, converte esses valores para os tipos corretos
   // Cria um objeto Negociacao
   // chama o método adiciona() do objeto negociacoes para adicionar a nova negociação em um array privado
   // Limpa o formulário
