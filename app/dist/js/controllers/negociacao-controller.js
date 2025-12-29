@@ -5,7 +5,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 import { domInjector } from "../decorators/dom-injector.js";
-import { logarTempoDeExecucao } from "../decorators/logar-tempo-de-execucao.js";
+import { inspect } from "../decorators/inspect.js";
 import { DiaDaSemana } from "../enums/diasDaSemana.js";
 import { Negociacao } from "../models/negociacao.js";
 import { Negociacoes } from "../models/negociacoes.js";
@@ -52,5 +52,5 @@ __decorate([
     domInjector("#valor")
 ], NegociacaoController.prototype, "inputValor", void 0);
 __decorate([
-    logarTempoDeExecucao(true)
+    inspect
 ], NegociacaoController.prototype, "adiciona", null);

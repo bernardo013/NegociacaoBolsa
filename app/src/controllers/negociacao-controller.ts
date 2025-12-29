@@ -25,34 +25,35 @@ export class NegociacaoController {
 
 
 
-// Adiciona o decorator para medir o tempo de execução do método 
-//escolhe se é em segundos (true) ou milisegundos (false)
-  @logarTempoDeExecucao(true)
+  // Adiciona o decorator para medir o tempo de execução do método 
+  //escolhe se é em segundos (true) ou milisegundos (false)
+  // @logarTempoDeExecucao(true)
+  @inspect
   public adiciona(): void {
-  //FAZ O FLUXO DO PROGRAMA
-  // a função criaDe() vindo da classe Negociacao, converte esses valores para os tipos corretos
-  // Cria um objeto Negociacao
-  // chama o método adiciona() do objeto negociacoes para adicionar a nova negociação em um array privado
-  // Limpa o formulário
+    //FAZ O FLUXO DO PROGRAMA
+    // a função criaDe() vindo da classe Negociacao, converte esses valores para os tipos corretos
+    // Cria um objeto Negociacao
+    // chama o método adiciona() do objeto negociacoes para adicionar a nova negociação em um array privado
+    // Limpa o formulário
     const negociacao = Negociacao.criaDe(this.inputData.value, this.inputQuantidade.value, this.inputValor.value)
-      if(!this.diaUtil(negociacao.data)){
-          this.mensagemView.update("apenas negociações em dias úteis são aceitas!")
-            return
-      }
-        this.negociacoes.adiciona(negociacao);
-        this.atualizaView()
-        this.limparForm();
+    if (!this.diaUtil(negociacao.data)) {
+      this.mensagemView.update("apenas negociações em dias úteis são aceitas!")
+      return
+    }
+    this.negociacoes.adiciona(negociacao);
+    this.atualizaView()
+    this.limparForm();
   }
-  
-  private limparForm():void {
+
+  private limparForm(): void {
     this.inputData.value = ''
     this.inputQuantidade.value = ''
     this.inputValor.value = ''
     this.inputData.focus();
   }
 
-  private diaUtil(data: Date){
-    return data.getDay()> DiaDaSemana.DOMINGO && data.getDay() < DiaDaSemana.SABADO
+  private diaUtil(data: Date) {
+    return data.getDay() > DiaDaSemana.DOMINGO && data.getDay() < DiaDaSemana.SABADO
   }
 
   private atualizaView(): void {
