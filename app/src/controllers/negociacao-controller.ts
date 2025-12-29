@@ -2,6 +2,7 @@ import { domInjector } from "../decorators/dom-injector.js";
 import { inspect } from "../decorators/inspect.js";
 import { logarTempoDeExecucao } from "../decorators/logar-tempo-de-execucao.js";
 import { DiaDaSemana } from "../enums/diasDaSemana.js";
+import { NegociacaoDoDia } from "../interfaces/negociacaoDoDia.js";
 import { Negociacao } from "../models/negociacao.js";
 import { Negociacoes } from "../models/negociacoes.js";
 import { MensagemView } from "../views/mensagem-view.js";
@@ -52,8 +53,18 @@ export class NegociacaoController {
     this.inputData.focus();
   }
 
+
+  //explicar aqui: 
   importaDados(): void {
-    alert('test')
+    fetch("http://localhost:8080/dados")
+      .then(res => res.json())
+      .then((dados: NegociacaoDoDia[]) => {
+        return dados.map(dadoDeHoje => {
+          return new Negociacao(new Date(), dadoDeHoje.vezes, dadoDeHoje.montante
+          )
+        })
+      })
+      .then(negociacoesDeHoje => { for (let negociacao of negociacoesDeHoje) { this.negociacoes.adiciona(negociacao) } })
   }
 
   private diaUtil(data: Date) {
