@@ -7,3 +7,13 @@ if (form) {
         negociacaoController.adiciona();
     });
 }
+else {
+    throw Error("Não foi possível iniciar a aplicação");
+}
+const botaoImporta = document.querySelector('#botao-importa');
+if (botaoImporta) {
+    botaoImporta.addEventListener('click', () => { negociacaoController.importaDados(); });
+}
+else {
+    throw Error("botão importa não encontrado!");
+}

@@ -52,6 +52,10 @@ export class NegociacaoController {
     this.inputData.focus();
   }
 
+  importaDados(): void {
+    alert('test')
+  }
+
   private diaUtil(data: Date) {
     return data.getDay() > DiaDaSemana.DOMINGO && data.getDay() < DiaDaSemana.SABADO
   }
