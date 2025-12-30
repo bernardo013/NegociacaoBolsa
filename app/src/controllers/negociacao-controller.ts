@@ -2,9 +2,9 @@ import { domInjector } from "../decorators/dom-injector.js";
 import { inspect } from "../decorators/inspect.js";
 import { logarTempoDeExecucao } from "../decorators/logar-tempo-de-execucao.js";
 import { DiaDaSemana } from "../enums/diasDaSemana.js";
-import { NegociacaoDoDia } from "../interfaces/negociacaoDoDia.js";
 import { Negociacao } from "../models/negociacao.js";
 import { Negociacoes } from "../models/negociacoes.js";
+import { NegociacaoService } from "../services/negociacoes-service.js";
 import { MensagemView } from "../views/mensagem-view.js";
 import { negociacoesView } from "../views/negociacoes-view.js";
 
@@ -16,9 +16,9 @@ export class NegociacaoController {
   @domInjector("#valor")
   private inputValor: HTMLInputElement;
   private negociacoes = new Negociacoes;
-  private NegociacoesView = new negociacoesView("#negociacoesView")
-  private mensagemView = new MensagemView("#mensagemView")
-
+  private NegociacoesView = new negociacoesView("#negociacoesView");
+  private mensagemView = new MensagemView("#mensagemView");
+  private negociacoesService = new NegociacaoService();
   constructor() {
     //garante que o que vai ser passado vai ser um HTMLInputElement, pois definimos que o input pode ou não ser null: "HTMLInputElement | null"
     this.NegociacoesView.update(this.negociacoes)
@@ -54,23 +54,17 @@ export class NegociacaoController {
   }
 
 
-// Usamos o fetch para fazer uma requisição HTTP para a URL que retorna os dados.
-//O primeiro .then recebe o objeto Response e converte o corpo da resposta para JSON.
-//O segundo .then tipa esse JSON como um array de NegociacaoDoDia (apenas para o TypeScript) e transforma cada objeto cru em uma instância da classe Negociacao.
-//O último .then percorre o array de negociações criadas e adiciona cada uma na coleção this.negociacoes usando o método adiciona.
-  importaDados(): void {
-    //nesse momento tu ainda não tem o JSON, só uma promessa de resposta do servidor.
-    fetch("http://localhost:8080/dados")
-      .then(res => res.json())
-      .then((dados: NegociacaoDoDia[]) => {
-        return dados.map(dadoDeHoje => {
-          return new Negociacao(new Date(), dadoDeHoje.vezes, dadoDeHoje.montante
-          )
-        })
-      })
-      .then(negociacoesDeHoje => { for (let negociacao of negociacoesDeHoje) { this.negociacoes.adiciona(negociacao) } })
-  }
 
+  importaDados(): void {
+    this.negociacoesService
+      .obterNegociacao()
+      .then(negociacoesDeHoje => {
+         for (let negociacao of negociacoesDeHoje) {
+           this.negociacoes.adiciona(negociacao)
+        }
+           this.NegociacoesView.update(this.negociacoes)
+      })
+  }
 
 
   private diaUtil(data: Date) {
