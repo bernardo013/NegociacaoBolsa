@@ -21,9 +21,17 @@ export class Negociacao {
     }
 
 
+public paraTexto(): string {
+    return  `
+        Data: ${this.data}
+        Quantidade: ${this.quantidade}
+        valor: ${this.valor}
+      `
+}
+
     //por ser estático o método pode ser acessado sem a classe ser instanciada.
  public static criaDe(dataString: string, quantidadeString: string, valorString: string): Negociacao {
-        
+
     //expressaõ regular que seleciona "-" e /g para indicar global ou seja todas "-";
     const exp = /-/g;
     //convertendo dados de entrada.

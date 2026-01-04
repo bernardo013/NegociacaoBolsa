@@ -18,9 +18,10 @@ export class Negociacoes {
         //cria um array de arrays ex : [[data], [quantidade] ....]
         //fazendo assim com que não seja possível acessar o array original.
         
-        
+    }
 
-
+    public paraTexto(): string {
+        return JSON.stringify(this.negociacoes, null, 2 )
     }
 }
  
