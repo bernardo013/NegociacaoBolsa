@@ -30,3 +30,4 @@ export class negociacoesView extends View {
             .format(data);
     }
 }
+//# sourceMappingURL=negociacoes-view.js.map
