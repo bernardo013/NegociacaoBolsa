@@ -1,11 +1,11 @@
 import { Comparavel } from "../interfaces/comparavel.js";
-import { Imprimivel } from "../utils/imprimivel.js";
+import { Imprimivel } from "../interfaces/imprimivel.js";
 import { Negociacao } from "./negociacao.js";
 
 export class Negociacoes implements Imprimivel, Comparavel<Negociacoes> {
     private negociacoes: Array<Negociacao> = [];
 
-    adiciona(negociacao: Negociacao){
+    adiciona(negociacao: Negociacao) {
         this.negociacoes.push(negociacao)
 
     }
@@ -19,11 +19,11 @@ export class Negociacoes implements Imprimivel, Comparavel<Negociacoes> {
         // return [...this.negociacoes]
         //cria um array de arrays ex : [[data], [quantidade] ....]
         //fazendo assim com que não seja possível acessar o array original.
-        
+
     }
 
     public paraTexto(): string {
-        return JSON.stringify(this.negociacoes, null, 2 )
+        return JSON.stringify(this.negociacoes, null, 2)
     }
 
     public ehIgual(negociacoes: Negociacoes): boolean {
