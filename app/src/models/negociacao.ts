@@ -1,7 +1,8 @@
+import { Comparavel } from "../interfaces/comparavel.js";
 import { Imprimivel } from "../utils/imprimivel.js";
 
 //permite exportar 
-export class Negociacao implements Imprimivel {
+export class Negociacao implements Imprimivel, Comparavel<Negociacao> {
 //tralha (#) representa os modificadores de acesso (private, public e protected)
     constructor(
         private _data: Date,
