@@ -1,15 +1,16 @@
-//permite exportar 
-export class Negociacao {
-//tralha (#) representa os modificadores de acesso (private, public e protected)
-    private _data;
-    public  readonly quantidade
-    public  readonly valor
+import { Imprimivel } from "../utils/imprimivel.js";
 
-    constructor(data: Date,quantidade: number,valor: number) {
-        this._data = data
-        this.quantidade = quantidade 
-        this.valor = valor
-    }
+//permite exportar 
+export class Negociacao extends Imprimivel {
+//tralha (#) representa os modificadores de acesso (private, public e protected)
+    constructor(
+        private _data: Date,
+        public readonly quantidade: number,
+        public readonly valor: number
+    ) 
+    {
+       super();
+    } 
 
     get data(): Date {
         const data = new Date(this._data.getTime())

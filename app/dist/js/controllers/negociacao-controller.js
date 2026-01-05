@@ -5,11 +5,11 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 import { domInjector } from "../decorators/dom-injector.js";
-import { inspect } from "../decorators/inspect.js";
 import { DiaDaSemana } from "../enums/diasDaSemana.js";
 import { Negociacao } from "../models/negociacao.js";
 import { Negociacoes } from "../models/negociacoes.js";
 import { NegociacaoService } from "../services/negociacoes-service.js";
+import { imprimir } from "../utils/imprimir.js";
 import { MensagemView } from "../views/mensagem-view.js";
 import { negociacoesView } from "../views/negociacoes-view.js";
 export class NegociacaoController {
@@ -27,8 +27,7 @@ export class NegociacaoController {
             return;
         }
         this.negociacoes.adiciona(negociacao);
-        console.log(this.negociacoes.paraTexto());
-        console.log(negociacao.paraTexto());
+        imprimir(negociacao, this.negociacoes);
         this.atualizaView();
         this.limparForm();
     }
@@ -65,6 +64,3 @@ __decorate([
 __decorate([
     domInjector("#valor")
 ], NegociacaoController.prototype, "inputValor", void 0);
-__decorate([
-    inspect
-], NegociacaoController.prototype, "adiciona", null);

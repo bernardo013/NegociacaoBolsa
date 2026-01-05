@@ -5,6 +5,7 @@ import { DiaDaSemana } from "../enums/diasDaSemana.js";
 import { Negociacao } from "../models/negociacao.js";
 import { Negociacoes } from "../models/negociacoes.js";
 import { NegociacaoService } from "../services/negociacoes-service.js";
+import { imprimir } from "../utils/imprimir.js";
 import { MensagemView } from "../views/mensagem-view.js";
 import { negociacoesView } from "../views/negociacoes-view.js";
 
@@ -29,7 +30,7 @@ export class NegociacaoController {
   // Adiciona o decorator para medir o tempo de execução do método 
   //escolhe se é em segundos (true) ou milisegundos (false)
   // @logarTempoDeExecucao(true)
-  @inspect
+  // @inspect
   public adiciona(): void {
     //FAZ O FLUXO DO PROGRAMA
     // a função criaDe() vindo da classe Negociacao, converte esses valores para os tipos corretos
@@ -42,8 +43,7 @@ export class NegociacaoController {
       return
     }
     this.negociacoes.adiciona(negociacao); 
-    console.log(this.negociacoes.paraTexto())
-    console.log(negociacao.paraTexto())
+    imprimir(negociacao, this.negociacoes);
     this.atualizaView()
     this.limparForm();
   }
