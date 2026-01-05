@@ -1,16 +1,14 @@
 import { Imprimivel } from "../utils/imprimivel.js";
 
 //permite exportar 
-export class Negociacao extends Imprimivel {
+export class Negociacao implements Imprimivel {
 //tralha (#) representa os modificadores de acesso (private, public e protected)
     constructor(
         private _data: Date,
         public readonly quantidade: number,
         public readonly valor: number
     ) 
-    {
-       super();
-    } 
+    {} 
 
     get data(): Date {
         const data = new Date(this._data.getTime())
@@ -44,5 +42,10 @@ public paraTexto(): string {
     return new Negociacao(data, quantidade, valor);
     }
 
+    public ehIgual(negociacao: Negociacao): boolean {
+        return this.data.getDate() === negociacao.data.getDate() &&
+               this.data.getMonth() === negociacao.data.getMonth() &&
+               this.data.getFullYear() === negociacao.data.getFullYear();
+    }   
 }
  
